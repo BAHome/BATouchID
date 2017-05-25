@@ -49,6 +49,7 @@
         
         if (touchIDType == BAKit_TouchIDTypeSuccess)
         {
+            BAKit_ShowAlertWithMsg(@"指纹登录成功！");
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         if (touchIDType == BAKit_TouchIDTypeInputPassword)
