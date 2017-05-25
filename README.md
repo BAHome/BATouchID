@@ -14,9 +14,8 @@
 * 6、本地密码登录后自动判断是否支持指纹登录，会自动判断指纹登录，详见 demo
 
 ## 2、图片示例
-<!--![BATouchID1](https://github.com/BAHome/BATouchID/blob/master/Images/BATouchID1.png)
-![BATouchID2](https://github.com/BAHome/BATouchID/blob/master/Images/BATouchID2.png)
--->
+![支付宝指纹登录流程图](https://github.com/BAHome/BATouchID/blob/master/Images/支付宝指纹登录流程图.png)
+
 ## 3、安装、导入示例和源码地址
 * 1、pod 导入【最新版本：version 1.0.0】： <br>
  `pod 'BATouchID'` <br>
