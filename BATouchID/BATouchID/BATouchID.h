@@ -87,7 +87,10 @@ UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确 定" style:UIAl
  1.0.0.1、新增 Touch ID de 详细封装 <br>
  1.0.0.2、可以自定义 描述文字、取消按钮、第二个按钮等、详细的错误状态返回 <br>
  1.0.0.3、demo 中增加了支付宝指纹登录逻辑，详见 demo
- 
+ 1.0.0.4、进入后台 10秒 后再次打开APP 会自动判断指纹登录，详见 demo
+ 1.0.0.5、本地存储开启指纹登录开关，会自动判断指纹登录，详见 demo
+ 1.0.0.6、本地密码登录后自动判断是否支持指纹登录，会自动判断指纹登录，详见 demo
+
 */
 
 #endif /* BATouchID_h */

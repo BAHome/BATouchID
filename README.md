@@ -9,6 +9,9 @@
 * 1、支付宝 指纹登录 touchID 封装 <br>
 * 2、可以自定义 描述文字、取消按钮、第二个按钮等、详细的错误状态返回
 * 3、demo 中增加了支付宝指纹登录逻辑，详见 demo
+* 4、进入后台 10秒 后再次打开APP 会自动判断指纹登录，详见 demo
+* 5、本地存储开启指纹登录开关，会自动判断指纹登录，详见 demo
+* 6、本地密码登录后自动判断是否支持指纹登录，会自动判断指纹登录，详见 demo
 
 ## 2、图片示例
 <!--![BATouchID1](https://github.com/BAHome/BATouchID/blob/master/Images/BATouchID1.png)
