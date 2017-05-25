@@ -39,6 +39,15 @@
 
 - (void)test
 {
+    /**
+     指纹解锁
+     
+     @param content  提示文本
+     @param cancelButtonTitle  取消按钮显示内容(此参数只有iOS10以上才能生效)，默认（nil）：取消
+     @param otherButtonTitle   密码登录按钮显示内容，默认（nil）：输入密码（nil）
+     @param enabled    默认：NO，输入密码按钮，使用系统解锁；YES：自己操作点击密码登录
+     @param BAKit_TouchIDTypeBlock   返回状态码和错误，可以自行单独处理
+     */
     [BAKit_TouchID ba_touchIDWithContent:@"此操作需要认证您的身份" cancelButtonTitle:nil otherButtonTitle:nil enabled:YES BAKit_TouchIDTypeBlock:^(BAKit_TouchIDType touchIDType, NSError *error, NSString *errorMessage) {
         
         if (errorMessage && touchIDType != BAKit_TouchIDTypeTouchIDLockout && touchIDType != BAKit_TouchIDTypeInputPassword)
@@ -58,7 +67,6 @@
                 NSLog(@"请跳转到自己的密码登录界面，如：手势解锁等！");
             }];
         }
-        
     }];
 }
 
@@ -85,21 +93,5 @@
     }
     return _touchIDButton;
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
