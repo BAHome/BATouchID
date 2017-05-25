@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C49231901ED52A7000B61C37 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C492318F1ED52A7000B61C37 /* main.m */; };
+		C49231931ED52A7000B61C37 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231921ED52A7000B61C37 /* AppDelegate.m */; };
+		C49231961ED52A7000B61C37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231951ED52A7000B61C37 /* ViewController.m */; };
+		C49231991ED52A7000B61C37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C49231971ED52A7000B61C37 /* Main.storyboard */; };
+		C492319B1ED52A7000B61C37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C492319A1ED52A7000B61C37 /* Assets.xcassets */; };
+		C492319E1ED52A7000B61C37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C492319C1ED52A7000B61C37 /* LaunchScreen.storyboard */; };
+		C49231A81ED52AAB00B61C37 /* BAKit_TouchID.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231A71ED52AAB00B61C37 /* BAKit_TouchID.m */; };
+		C49231AC1ED52C6000B61C37 /* TouchIDLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231AB1ED52C6000B61C37 /* TouchIDLoginVC.m */; };
+		C49231AF1ED559FB00B61C37 /* BAKit_DeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231AE1ED559FB00B61C37 /* BAKit_DeviceModel.m */; };
+		C49231BC1ED56E4E00B61C37 /* UIButton+BAKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231B91ED56E4E00B61C37 /* UIButton+BAKit.m */; };
+		C49231BD1ED56E4E00B61C37 /* UIView+BARectCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231BB1ED56E4E00B61C37 /* UIView+BARectCorner.m */; };
+		C49231EA1ED671E500B61C37 /* NSString+BAKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231E91ED671E500B61C37 /* NSString+BAKit.m */; };
+		C49231EE1ED680E700B61C37 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C49231EC1ED680E700B61C37 /* LoginViewController.m */; };
+		C49231EF1ED680E700B61C37 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C49231ED1ED680E700B61C37 /* LoginViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C492318B1ED52A7000B61C37 /* BATouchID.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BATouchID.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C492318F1ED52A7000B61C37 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C49231911ED52A7000B61C37 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C49231921ED52A7000B61C37 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C49231941ED52A7000B61C37 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C49231951ED52A7000B61C37 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C49231981ED52A7000B61C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C492319A1ED52A7000B61C37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C492319D1ED52A7000B61C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C492319F1ED52A7000B61C37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C49231A61ED52AAA00B61C37 /* BAKit_TouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_TouchID.h; sourceTree = "<group>"; };
+		C49231A71ED52AAB00B61C37 /* BAKit_TouchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAKit_TouchID.m; sourceTree = "<group>"; };
+		C49231A91ED52AD900B61C37 /* BATouchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATouchID.h; sourceTree = "<group>"; };
+		C49231AA1ED52C6000B61C37 /* TouchIDLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchIDLoginVC.h; sourceTree = "<group>"; };
+		C49231AB1ED52C6000B61C37 /* TouchIDLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchIDLoginVC.m; sourceTree = "<group>"; };
+		C49231AD1ED559FB00B61C37 /* BAKit_DeviceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAKit_DeviceModel.h; sourceTree = "<group>"; };
+		C49231AE1ED559FB00B61C37 /* BAKit_DeviceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAKit_DeviceModel.m; sourceTree = "<group>"; };
+		C49231B71ED56E4E00B61C37 /* BAButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAButton.h; sourceTree = "<group>"; };
+		C49231B81ED56E4E00B61C37 /* UIButton+BAKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BAKit.h"; sourceTree = "<group>"; };
+		C49231B91ED56E4E00B61C37 /* UIButton+BAKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BAKit.m"; sourceTree = "<group>"; };
+		C49231BA1ED56E4E00B61C37 /* UIView+BARectCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BARectCorner.h"; sourceTree = "<group>"; };
+		C49231BB1ED56E4E00B61C37 /* UIView+BARectCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BARectCorner.m"; sourceTree = "<group>"; };
+		C49231E81ED671E500B61C37 /* NSString+BAKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BAKit.h"; sourceTree = "<group>"; };
+		C49231E91ED671E500B61C37 /* NSString+BAKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BAKit.m"; sourceTree = "<group>"; };
+		C49231EB1ED680E700B61C37 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C49231EC1ED680E700B61C37 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C49231ED1ED680E700B61C37 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C49231881ED52A7000B61C37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C49231821ED52A7000B61C37 = {
+			isa = PBXGroup;
+			children = (
+				C492318D1ED52A7000B61C37 /* BATouchID */,
+				C492318C1ED52A7000B61C37 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C492318C1ED52A7000B61C37 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C492318B1ED52A7000B61C37 /* BATouchID.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C492318D1ED52A7000B61C37 /* BATouchID */ = {
+			isa = PBXGroup;
+			children = (
+				C49231A51ED52A9D00B61C37 /* BATouchID */,
+				C49231B61ED56E4E00B61C37 /* BAButton */,
+				C49231911ED52A7000B61C37 /* AppDelegate.h */,
+				C49231921ED52A7000B61C37 /* AppDelegate.m */,
+				C49231941ED52A7000B61C37 /* ViewController.h */,
+				C49231951ED52A7000B61C37 /* ViewController.m */,
+				C49231EB1ED680E700B61C37 /* LoginViewController.h */,
+				C49231EC1ED680E700B61C37 /* LoginViewController.m */,
+				C49231ED1ED680E700B61C37 /* LoginViewController.xib */,
+				C49231AA1ED52C6000B61C37 /* TouchIDLoginVC.h */,
+				C49231AB1ED52C6000B61C37 /* TouchIDLoginVC.m */,
+				C49231E81ED671E500B61C37 /* NSString+BAKit.h */,
+				C49231E91ED671E500B61C37 /* NSString+BAKit.m */,
+				C49231971ED52A7000B61C37 /* Main.storyboard */,
+				C492319A1ED52A7000B61C37 /* Assets.xcassets */,
+				C492319C1ED52A7000B61C37 /* LaunchScreen.storyboard */,
+				C492319F1ED52A7000B61C37 /* Info.plist */,
+				C492318E1ED52A7000B61C37 /* Supporting Files */,
+			);
+			path = BATouchID;
+			sourceTree = "<group>";
+		};
+		C492318E1ED52A7000B61C37 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C492318F1ED52A7000B61C37 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C49231A51ED52A9D00B61C37 /* BATouchID */ = {
+			isa = PBXGroup;
+			children = (
+				C49231A91ED52AD900B61C37 /* BATouchID.h */,
+				C49231A61ED52AAA00B61C37 /* BAKit_TouchID.h */,
+				C49231A71ED52AAB00B61C37 /* BAKit_TouchID.m */,
+				C49231AD1ED559FB00B61C37 /* BAKit_DeviceModel.h */,
+				C49231AE1ED559FB00B61C37 /* BAKit_DeviceModel.m */,
+			);
+			path = BATouchID;
+			sourceTree = "<group>";
+		};
+		C49231B61ED56E4E00B61C37 /* BAButton */ = {
+			isa = PBXGroup;
+			children = (
+				C49231B71ED56E4E00B61C37 /* BAButton.h */,
+				C49231B81ED56E4E00B61C37 /* UIButton+BAKit.h */,
+				C49231B91ED56E4E00B61C37 /* UIButton+BAKit.m */,
+				C49231BA1ED56E4E00B61C37 /* UIView+BARectCorner.h */,
+				C49231BB1ED56E4E00B61C37 /* UIView+BARectCorner.m */,
+			);
+			path = BAButton;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C492318A1ED52A7000B61C37 /* BATouchID */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C49231A21ED52A7000B61C37 /* Build configuration list for PBXNativeTarget "BATouchID" */;
+			buildPhases = (
+				C49231871ED52A7000B61C37 /* Sources */,
+				C49231881ED52A7000B61C37 /* Frameworks */,
+				C49231891ED52A7000B61C37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BATouchID;
+			productName = BATouchID;
+			productReference = C492318B1ED52A7000B61C37 /* BATouchID.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C49231831ED52A7000B61C37 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = boai;
+				TargetAttributes = {
+					C492318A1ED52A7000B61C37 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 8JQ2PK6XN8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C49231861ED52A7000B61C37 /* Build configuration list for PBXProject "BATouchID" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C49231821ED52A7000B61C37;
+			productRefGroup = C492318C1ED52A7000B61C37 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C492318A1ED52A7000B61C37 /* BATouchID */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C49231891ED52A7000B61C37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C49231EF1ED680E700B61C37 /* LoginViewController.xib in Resources */,
+				C492319E1ED52A7000B61C37 /* LaunchScreen.storyboard in Resources */,
+				C492319B1ED52A7000B61C37 /* Assets.xcassets in Resources */,
+				C49231991ED52A7000B61C37 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C49231871ED52A7000B61C37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C49231A81ED52AAB00B61C37 /* BAKit_TouchID.m in Sources */,
+				C49231AF1ED559FB00B61C37 /* BAKit_DeviceModel.m in Sources */,
+				C49231961ED52A7000B61C37 /* ViewController.m in Sources */,
+				C49231EA1ED671E500B61C37 /* NSString+BAKit.m in Sources */,
+				C49231EE1ED680E700B61C37 /* LoginViewController.m in Sources */,
+				C49231AC1ED52C6000B61C37 /* TouchIDLoginVC.m in Sources */,
+				C49231BC1ED56E4E00B61C37 /* UIButton+BAKit.m in Sources */,
+				C49231931ED52A7000B61C37 /* AppDelegate.m in Sources */,
+				C49231BD1ED56E4E00B61C37 /* UIView+BARectCorner.m in Sources */,
+				C49231901ED52A7000B61C37 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C49231971ED52A7000B61C37 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C49231981ED52A7000B61C37 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C492319C1ED52A7000B61C37 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C492319D1ED52A7000B61C37 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C49231A01ED52A7000B61C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C49231A11ED52A7000B61C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C49231A31ED52A7000B61C37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8JQ2PK6XN8;
+				INFOPLIST_FILE = BATouchID/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boaihome.BATouchID;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C49231A41ED52A7000B61C37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8JQ2PK6XN8;
+				INFOPLIST_FILE = BATouchID/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boaihome.BATouchID;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C49231861ED52A7000B61C37 /* Build configuration list for PBXProject "BATouchID" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C49231A01ED52A7000B61C37 /* Debug */,
+				C49231A11ED52A7000B61C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C49231A21ED52A7000B61C37 /* Build configuration list for PBXNativeTarget "BATouchID" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C49231A31ED52A7000B61C37 /* Debug */,
+				C49231A41ED52A7000B61C37 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C49231831ED52A7000B61C37 /* Project object */;
+}
