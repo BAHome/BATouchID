@@ -78,6 +78,9 @@ UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确 定" style:UIAl
  ************************************ 更新说明 ************************************
  *********************************************************************************
  
+ 项目源码地址：
+ OC 版 ：https://github.com/BAHome/BATouchID
+ 
  最新更新时间：2017-05-24 【倒叙】 <br>
  最新Version：【Version：1.0.0】 <br>
  更新内容： <br>
