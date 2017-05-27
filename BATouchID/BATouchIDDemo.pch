@@ -1,0 +1,23 @@
+//
+//  BATouchIDDemo.pch
+//  BATouchID
+//
+//  Created by boai on 2017/5/26.
+//  Copyright © 2017年 boai. All rights reserved.
+//
+
+#ifndef BATouchIDDemo_pch
+#define BATouchIDDemo_pch
+
+#define kIsLogin                  @"kIsLogin"
+#define kIsOpenTouchID            @"kIsOpenTouchID"
+#define kIsOpenUnlockedGesture    @"kIsOpenUnlockedGesture"
+
+#define kLastEnterBackgroundDate  @"kLastEnterBackgroundDate"
+
+#define kUserDefaults [NSUserDefaults standardUserDefaults]
+
+#import "UIAlertController+Blocks.h"
+
+
+#endif /* BATouchIDDemo_pch */

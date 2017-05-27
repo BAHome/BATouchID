@@ -8,165 +8,100 @@
 
 #import "LoginViewController.h"
 
-#import "TouchIDLoginVC.h"
+#import "BATouchIDLoginVC.h"
 #import "NSString+BAKit.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "BATouchID.h"
 
-static NSString * const kIsLogin = @"kIsLogin";
-static NSString * const kIsOpenTouchID = @"kIsOpenTouchID";
+#import "SettingVC.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
-@property (weak, nonatomic) IBOutlet UIView *touchIDView;
-
-@property (weak, nonatomic) IBOutlet UISwitch *switchButton;
-
-
 - (IBAction)handleButtonAction:(UIButton *)sender;
-- (IBAction)handleSwithcAction:(UISwitch *)sender;
-
 
 @end
 
 @implementation LoginViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     [self setupUI];
 }
 
-
 - (void)setupUI
 {
-    self.title = @"登 录";
-    self.touchIDView.hidden = NO;
+    [self checkIsAlreadyOpenTouchID];
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    id isLogin = [defaults objectForKey:kIsLogin];
-    id isShow = [defaults objectForKey:kIsOpenTouchID];
+    self.title = @"登 录";
+
+}
+
+- (void)checkIsAlreadyOpenTouchID
+{
+    id isLogin = [kUserDefaults objectForKey:kIsLogin];
+    id isOpenTouchID = [kUserDefaults objectForKey:kIsOpenTouchID];
     
-    if ([isShow intValue] == 0)
-    {
-        self.switchButton.on = NO;
-    }
-    else
-    {
-        self.switchButton.on = YES;
-    }
     if ([isLogin intValue] == 1)
     {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(handleNaviAction)];
+
         [self.loginButton setTitle:@"已登录" forState:UIControlStateNormal];
         
-        if ([isShow intValue] != 0)
+        if ([isOpenTouchID intValue] == 1)
         {
-            [self presentViewController:[TouchIDLoginVC new] animated:YES completion:nil];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[BATouchIDLoginVC new]];
+            [self presentViewController:navi animated:YES completion:nil];
         }
     }
-    
+}
+
+- (void)handleNaviAction
+{
+    [self.navigationController pushViewController:[SettingVC new] animated:YES];
 }
 
 - (IBAction)handleButtonAction:(UIButton *)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = kUserDefaults;
     id isLogin = [defaults objectForKey:kIsLogin];
     if ([isLogin intValue] == 0)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kIsLogin];
+        [kUserDefaults setObject:[NSNumber numberWithBool:YES] forKey:kIsLogin];
         BAKit_ShowAlertWithMsg_ios8(@"登录成功！");
         [self.loginButton setTitle:@"已登录" forState:UIControlStateNormal];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self test];
+            [self checkIsSupportTouchID];
         });
     }
     else
     {
         BAKit_ShowAlertWithMsg_ios8(@"您已经登录过！");
-
     }
 }
 
-- (IBAction)handleSwithcAction:(UISwitch *)sender
+- (void)checkIsSupportTouchID
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    id isLogin = [defaults objectForKey:kIsLogin];
-//    id isShow = [defaults objectForKey:kIsOpenTouchID];
-    if ([isLogin intValue] == 0)
-    {
-        BAKit_ShowAlertWithMsg_ios8(@"请您先登录后再开启指纹登录！");
-        self.switchButton.on = NO;
-    }
-    else
-    {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:kIsOpenTouchID];
-        if (sender.on)
+    [UIAlertController ba_alertControllerShowAlertInViewController:self withTitle:@"登录成功！" mutableAttributedTitle:nil message:@"是否设置指纹登录或者手势登录？" mutableAttributedMessage:nil buttonTitlesArray:@[@"取 消", @"确 定"] buttonTitleColorArray:@[[UIColor greenColor], [UIColor redColor]] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+        
+        if (buttonIndex == 1)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kIsOpenTouchID];
-            self.switchButton.on = YES;
-            [self presentViewController:[TouchIDLoginVC new] animated:YES completion:nil];
+            [self.navigationController pushViewController:[SettingVC new] animated:YES];
         }
         else
         {
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:kIsOpenTouchID];
-            self.switchButton.on = NO;
+            return ;
         }
-    }
+        
+        return;
+    }];
 }
-
-- (void)test
-{
-    LAContext *context = [[LAContext alloc] init]; // 初始化上下文对象
-    
-    NSInteger policy;
-    if (IOS_VERSION < 9.0 && IOS_VERSION >= 8.0)
-    {
-        policy = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
-    }
-    else
-    {
-        policy = LAPolicyDeviceOwnerAuthentication;
-    }
-    
-    NSError *error = nil;
-    // 判断设备是否支持指纹识别功能
-    if ([context canEvaluatePolicy:policy error:&error])
-    {
-        // 支持指纹验证
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录成功！" message:@"是否启用指纹登录" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"稍后" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-            NSLog(@"点击了稍后按钮！");
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        
-        UIAlertAction *startUseAction = [UIAlertAction actionWithTitle:@"启用" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-            
-            NSLog(@"点击了启用指纹按钮！");
-            [self dismissViewControllerAnimated:YES completion:nil];
-            
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            id isShow = [defaults objectForKey:kIsOpenTouchID];
-            if ([isShow intValue] == 0)
-            {
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:kIsOpenTouchID];
-                self.switchButton.on = YES;
-                [self presentViewController:[TouchIDLoginVC new] animated:YES completion:nil];
-            }
-        }];
-        [alertController addAction:cancelAction];
-        [alertController addAction:startUseAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    else
-    {
-        BAKit_ShowAlertWithMsg_ios8(@"设备不支持 touch ID！");
-    }
-}
-
 
 @end

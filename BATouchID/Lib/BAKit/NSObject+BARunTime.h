@@ -57,57 +57,52 @@
  
  */
 
+/**
+ *  - 添加运行时分类方法
+ *  - 用于运行时动态获取当前类的属性列表、方法列表、成员变量列表、协议列表
+ *  - 性能优化
+ */
+#import <Foundation/Foundation.h>
 
-#ifndef BATouchID_h
-#define BATouchID_h
+@interface NSObject (BARunTime)
 
-#import "BAKit_TouchID.h"
+/**
+ *  将 ‘字典数组‘ 转换成当前模型的对象数组
+ *
+ *  @param array 字典数组
+ *
+ *  @return 返回模型对象的数组
+ */
++ (NSArray *)ba_objectsWithArray:(NSArray *)array;
 
+/**
+ *  返回当前类的所有属性列表
+ *
+ *  @return 属性名称
+ */
++ (NSArray *)ba_propertysList;
 
-/*! view 用 BAKit_ShowAlertWithMsg */
-#define BAKit_ShowAlertWithMsg(msg) [[[UIAlertView alloc] initWithTitle:@"温馨提示" message:(msg) delegate:nil cancelButtonTitle:@"确 定" otherButtonTitles:nil] show];
+/**
+ *  返回当前类的所有成员变量数组
+ *
+ *  @return 当前类的所有成员变量！ 
+ *
+ *  Tips：用于调试, 可以尝试查看所有不开源的类的ivar
+ */
++ (NSArray *)ba_ivarList;
 
-/*! VC 用 BAKit_ShowAlertWithMsg */
-#define BAKit_ShowAlertWithMsg_ios8(msg) UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:msg preferredStyle:UIAlertControllerStyleAlert];\
-UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确 定" style:UIAlertActionStyleDefault handler:nil];\
-[alert addAction:sureAction];\
-[self presentViewController:alert animated:YES completion:nil];
+/**
+ *  返回当前类的所有方法
+ *
+ *  @return 当前类的所有成员变量！
+ */
++ (NSArray *)ba_methodList;
 
-/*!
- *********************************************************************************
- ************************************ 更新说明 ************************************
- *********************************************************************************
- 
- 项目源码地址：
- OC 版 ：https://github.com/BAHome/BATouchID
- 
- 最新更新时间：2017-05-27 【倒叙】 <br>
- 最新Version：【Version：1.0.1】 <br>
- 更新内容： <br>
- 1.0.1.1、新增 单独判断是否支持指纹识别的方法 <br>
- 1.0.1.2、demo 新增手势密码设置、验证、修改、重置等方法 <br>
- 1.0.1.3、demo 新增手势密码和指纹识别的逻辑处理，具体使用中可参照demo 中的逻辑处理方式 <br>
+/**
+ *  返回当前类的所有协议
+ *
+ *  @return 当前类的所有协议！
+ */
++ (NSArray *)ba_protocolList;
 
- 最新更新时间：2017-05-24 【倒叙】 <br>
- 最新Version：【Version：1.0.0】 <br>
- 更新内容： <br>
- 1.0.0.1、新增 Touch ID 的 详细封装 <br>
- 1.0.0.2、可以自定义 描述文字、取消按钮、第二个按钮等、详细的错误状态返回 <br>
- 1.0.0.3、demo 中增加了支付宝指纹登录逻辑，详见 demo
- 1.0.0.4、进入后台 10秒 后再次打开APP 会自动判断指纹登录，详见 demo
- 1.0.0.5、本地存储开启指纹登录开关，会自动判断指纹登录，详见 demo
- 1.0.0.6、本地密码登录后自动判断是否支持指纹登录，会自动判断指纹登录，详见 demo
-
-*/
-
-#endif /* BATouchID_h */
-
-
-
-
-
-
-
-
-
-
+@end

@@ -73,7 +73,24 @@ typedef NS_ENUM(NSUInteger, BAKit_TouchIDType){
     BAKit_TouchIDTypeVersionNotSupport
 };
 
+/**
+ 指纹解锁 回调
+
+ @param touchIDType 返回的类型，BAKit_TouchIDType
+ @param error error
+ @param errorMessage errorMessage
+ */
 typedef void (^BAKit_TouchID_Block)(BAKit_TouchIDType touchIDType, NSError *error, NSString *errorMessage);
+
+/**
+ 判断是否支持指纹解锁 回调
+
+ @param isSupport 是否支持
+ @param context context
+ @param policy policy
+ @param error error
+ */
+typedef void (^BAKit_TouchIDVerifyIsSupport_Block)(BOOL isSupport, LAContext *context, NSInteger policy, NSError *error);
 
 @interface BAKit_TouchID : NSObject
 
@@ -91,5 +108,12 @@ typedef void (^BAKit_TouchID_Block)(BAKit_TouchIDType touchIDType, NSError *erro
              otherButtonTitle:(NSString *)otherButtonTitle
                       enabled:(BOOL)enabled
        BAKit_TouchIDTypeBlock:(BAKit_TouchID_Block)BAKit_TouchIDTypeBlock;
+
+/**
+ 判断是否支持指纹解锁
+
+ @param block block
+ */
++ (void)ba_touchIDVerifyIsSupportWithBlock:(BAKit_TouchIDVerifyIsSupport_Block)block;
 
 @end

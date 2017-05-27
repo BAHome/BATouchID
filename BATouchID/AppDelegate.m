@@ -8,12 +8,11 @@
 
 #import "AppDelegate.h"
 #import "BATouchID.h"
-#import "TouchIDLoginVC.h"
+#import "BATouchIDLoginVC.h"
 
 #import "NSString+BAKit.h"
 
-static NSString * const kLastEnterBackgroundDate = @"kLastEnterBackgroundDate";
-
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +23,9 @@ static NSString * const kLastEnterBackgroundDate = @"kLastEnterBackgroundDate";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+        
+    [self checkIsAlreadyOpenTouchIDIsStart:YES];
+
     return YES;
 }
 
@@ -32,13 +34,9 @@ static NSString * const kLastEnterBackgroundDate = @"kLastEnterBackgroundDate";
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setObject:[NSDate date] forKey:kLastEnterBackgroundDate];
-    [userDefault synchronize];
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [kUserDefaults setObject:[NSDate date] forKey:kLastEnterBackgroundDate];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -49,13 +47,37 @@ static NSString * const kLastEnterBackgroundDate = @"kLastEnterBackgroundDate";
 
 - (void)test
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDate *date = [defaults objectForKey:kLastEnterBackgroundDate];
+    NSDate *date = [kUserDefaults objectForKey:kLastEnterBackgroundDate];
     
     // 进入后台 10 秒后需要重新验证指纹
-    if (!date || [[NSString ba_intervalSinceNow:date] floatValue] > 1*10)
+    if (!date || [[NSString ba_intervalSinceNow:date] floatValue] > 1*3)
     {
-        [self.window.rootViewController presentViewController:[TouchIDLoginVC new] animated:YES completion:nil];
+        [self checkIsAlreadyOpenTouchIDIsStart:NO];
+    }
+}
+
+- (void)checkIsAlreadyOpenTouchIDIsStart:(BOOL)isStart
+{
+    id isLogin = [kUserDefaults objectForKey:kIsLogin];
+    id isOpenTouchID = [kUserDefaults objectForKey:kIsOpenTouchID];
+    
+    if ([isLogin intValue] == 1)
+    {
+        if ([isOpenTouchID intValue] == 1)
+        {
+            
+            BATouchIDLoginVC *vc = [BATouchIDLoginVC new];
+            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+            if (isStart)
+            {
+                vc.isStart = YES;
+                [[UIApplication sharedApplication].windows lastObject].rootViewController = navi;
+            }
+            else
+            {
+                [self.window.rootViewController presentViewController:navi animated:NO completion:nil];
+            }
+        }
     }
 }
 

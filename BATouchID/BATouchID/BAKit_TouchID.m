@@ -26,100 +26,80 @@
                       enabled:(BOOL)enabled
        BAKit_TouchIDTypeBlock:(BAKit_TouchID_Block)BAKit_TouchIDTypeBlock
 {
-    LAContext *context = [LAContext new];
-    context.localizedFallbackTitle = otherButtonTitle;
-    context.maxBiometryFailures = @(3);  // 接收的最大的错误次数
-
-    if (IOS_VERSION >= 10.0)
-    {
-        context.localizedCancelTitle = cancelButtonTitle;
-    }
-    NSInteger policy;
-    if (IOS_VERSION < 9.0 && IOS_VERSION >= 8.0)
-    {
-        policy = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
-    }
-    else
-    {
-        policy = LAPolicyDeviceOwnerAuthentication;
-    }
-    
-    NSInteger policy2;
-    if (enabled)
-    {
-        policy2 = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
-    }
-    else
-    {
-        policy2 = LAPolicyDeviceOwnerAuthentication;
-    }
-    
-    // 错误对象
-    NSError *error2 = nil;
-    
-    // 首先使用 canEvaluatePolicy 判断设备支持状态
-    BOOL isSupport = [context canEvaluatePolicy:policy error:&error2];
-    if (isSupport)
-    {
-        // 支持指纹验证
-        [context evaluatePolicy:policy2 localizedReason:content reply:^(BOOL success, NSError * _Nullable error) {
-            if (success)
-            {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeSuccess, error, nil);
-                });
-                
-                return ;
-            }
-            else if (error)
-            {
-                NSString *msg = @"";
-                switch (error.code) {
-                    case LAErrorAuthenticationFailed:
-                    {
-                        msg = @"TouchID 验证失败";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeFail, error, msg);
-                    }
-                        break;
-                    case LAErrorUserCancel:
-                    {
-                        msg = @"TouchID 被用户手动取消";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeUserCancel, error, msg);
-                    }
-                        break;
-                    case LAErrorUserFallback:
-                    {
-                        msg = @"用户不使用TouchID,选择手动输入密码";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeInputPassword, error, msg);
-                    }
-                        break;
-                    case LAErrorSystemCancel:
-                    {
-                        msg = @"TouchID 被系统取消 (如遇到来电,锁屏,按了Home键等)";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeSystemCancel, error, msg);
-                    }
-                        break;
-                    case LAErrorPasscodeNotSet:
-                    {
-                        msg = @"TouchID 无法启动,因为用户没有设置密码";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypePasswordNotSet, error, msg);
-                    }
-                        break;
-                    case LAErrorTouchIDNotEnrolled:
-                    {
-                        msg = @"TouchID 无法启动,因为用户没有设置 TouchID";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeTouchIDNotSet, error, msg);
-                    }
-                        break;
-                    case LAErrorTouchIDNotAvailable:
-                    {
-                        msg = @"TouchID 无效";
-                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeTouchIDNotAvailable, error, msg);
-                    }
-                        break;
+    [BAKit_TouchID ba_touchIDVerifyIsSupportWithBlock:^(BOOL isSupport, LAContext *context, NSInteger policy, NSError *error) {
+        
+        context.localizedFallbackTitle = otherButtonTitle;
+        NSInteger policy2;
+        if (enabled)
+        {
+            policy2 = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
+        }
+        else
+        {
+            policy2 = LAPolicyDeviceOwnerAuthentication;
+        }
+        
+        if (isSupport)
+        {
+            // 支持指纹验证
+            [context evaluatePolicy:policy2 localizedReason:content reply:^(BOOL success, NSError * _Nullable error) {
+                if (success)
+                {
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeSuccess, error, nil);
+                    });
                     
-                    if (IOS_VERSION >= 9.0)
-                    {
+                    return ;
+                }
+                else if (error)
+                {
+                    NSString *msg = @"";
+                    switch (error.code) {
+                        case LAErrorAuthenticationFailed:
+                        {
+                            msg = @"TouchID 验证失败";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeFail, error, msg);
+                        }
+                            break;
+                        case LAErrorUserCancel:
+                        {
+                            msg = @"TouchID 被用户手动取消";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeUserCancel, error, msg);
+                        }
+                            break;
+                        case LAErrorUserFallback:
+                        {
+                            msg = @"用户不使用TouchID,选择手动输入密码";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeInputPassword, error, msg);
+                        }
+                            break;
+                        case LAErrorSystemCancel:
+                        {
+                            msg = @"TouchID 被系统取消 (如遇到来电,锁屏,按了Home键等)";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeSystemCancel, error, msg);
+                        }
+                            break;
+                        case LAErrorPasscodeNotSet:
+                        {
+                            msg = @"TouchID 无法启动,因为用户没有设置密码";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypePasswordNotSet, error, msg);
+                        }
+                            break;
+                        case LAErrorTouchIDNotEnrolled:
+                        {
+                            msg = @"TouchID 无法启动,因为用户没有设置 TouchID";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeTouchIDNotSet, error, msg);
+                        }
+                            break;
+                        case LAErrorTouchIDNotAvailable:
+                        {
+                            msg = @"TouchID 无效";
+                            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeTouchIDNotAvailable, error, msg);
+                        }
+                            break;
+                            
+                        if (IOS_VERSION >= 9.0)
+                        {
                         case LAErrorTouchIDLockout:
                             {
                                 msg = @"TouchID 被锁定(连续多次验证 TouchID 失败,系统需要用户手动输入密码)";
@@ -150,29 +130,58 @@
                                 }
                             }
                             break;
-                    }
-                        
-                    default:
-                    {
-                        msg = @"TouchID 验证失败";
-                        if (enabled)
-                        {
-                            [context evaluatePolicy:policy localizedReason:content reply:^(BOOL success, NSError * _Nullable error) {}];
                         }
+                            
+                        default:
+                        {
+                            msg = @"TouchID 验证失败";
+                            if (enabled)
+                            {
+                                [context evaluatePolicy:policy localizedReason:content reply:^(BOOL success, NSError * _Nullable error) {}];
+                            }
+                        }
+                            break;
                     }
-                        break;
+                    NSLog(@"%@", msg);
                 }
-                NSLog(@"%@", msg);
-            }
-        }];
+            }];
+        }
+        else
+        {
+            NSString *msg = @"";
+            msg = [NSString stringWithFormat:@"此设备不支持Touch ID\n设备操作系统:%@\n设备系统版本号:%@\n设备型号:%@", [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] systemName], [BAKit_DeviceModel ba_deviceGetCurrentDeviceModel]];
+            
+            BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeNotSupport, nil, msg);
+        }
+    }];
+}
+
+/**
+ 判断是否支持指纹解锁
+ 
+ @param block block
+ */
++ (void)ba_touchIDVerifyIsSupportWithBlock:(BAKit_TouchIDVerifyIsSupport_Block)block
+{
+    LAContext *context = [LAContext new];
+    context.maxBiometryFailures = @(3);  // 接收的最大的错误次数
+    
+    NSInteger policy;
+    if (IOS_VERSION < 9.0 && IOS_VERSION >= 8.0)
+    {
+        policy = LAPolicyDeviceOwnerAuthenticationWithBiometrics;
     }
     else
     {
-        NSString *msg = @"";
-        msg = [NSString stringWithFormat:@"此设备不支持Touch ID\n设备操作系统:%@\n设备系统版本号:%@\n设备型号:%@", [[UIDevice currentDevice] systemVersion], [[UIDevice currentDevice] systemName], [BAKit_DeviceModel ba_deviceGetCurrentDeviceModel]];
-
-        BAKit_TouchIDTypeBlock(BAKit_TouchIDTypeNotSupport, nil, msg);
+        policy = LAPolicyDeviceOwnerAuthentication;
     }
+    
+    // 错误对象
+    NSError *error = nil;
+    
+    // 首先使用 canEvaluatePolicy 判断设备支持状态
+    BOOL isSupport = [context canEvaluatePolicy:policy error:&error];
+    block(isSupport, context, policy, error);
 }
 
 @end

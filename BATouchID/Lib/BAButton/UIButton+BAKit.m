@@ -366,6 +366,12 @@ highlightedBackgroundImage:(UIImage *)highlightedBackgroundImage
     return [objc_getAssociatedObject(self, paddingKey) floatValue];
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    [self setupButtonLayout];
+}
+
 @end
 NS_ASSUME_NONNULL_END
 

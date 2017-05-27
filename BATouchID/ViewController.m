@@ -8,12 +8,10 @@
 
 #import "ViewController.h"
 
-#import "TouchIDLoginVC.h"
-
+#import "BATouchIDLoginVC.h"
 #import "LoginViewController.h"
 
-static NSString * const kIsLogin = @"kIsLogin";
-static NSString * const kIsOpenTouchID = @"kIsOpenTouchID";
+#import "BAButton.h"
 
 @interface ViewController ()
 
@@ -46,25 +44,14 @@ static NSString * const kIsOpenTouchID = @"kIsOpenTouchID";
 
 - (void)handleButtonAction:(UIButton *)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    id isLogin = [defaults objectForKey:kIsLogin];
-    id isShow = [defaults objectForKey:kIsOpenTouchID];
-    
-    if ([isLogin intValue] == 1 && [isShow intValue] == 1)
-    {
-        [self presentViewController:[TouchIDLoginVC new] animated:YES completion:nil];
-    }
-    else
-    {
-        [self.navigationController pushViewController:[LoginViewController new] animated:YES];
-    }
+
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    _loginButton.frame = CGRectMake(0, 0, 150, 200);
+    _loginButton.frame = CGRectMake(0, 0, 200, 200);
     _loginButton.center = self.view.center;
 }
 
@@ -72,11 +59,15 @@ static NSString * const kIsOpenTouchID = @"kIsOpenTouchID";
 {
     if (!_loginButton)
     {
-        _loginButton = [[UIButton alloc] init];
-        [_loginButton setTitle:@"点击进行登录" forState:UIControlStateNormal];
+        _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_loginButton setTitle:@"这里是首页！" forState:UIControlStateNormal];
         [_loginButton setTitleColor:[UIColor colorWithRed:0 green:152/255.0 blue:229/255.0 alpha:1.0f] forState:UIControlStateNormal];
+        [_loginButton setImage:[UIImage imageNamed:@"tabbar_mainframeHL"] forState:UIControlStateNormal];
+
         [_loginButton addTarget:self action:@selector(handleButtonAction:) forControlEvents:UIControlEventTouchDown];
         [self.view addSubview:_loginButton];
+        
+        [_loginButton ba_button_setBAButtonLayoutType:BAButtonLayoutTypeCenterImageTop padding:10];
     }
     return _loginButton;
 }

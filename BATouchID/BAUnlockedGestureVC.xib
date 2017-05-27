@@ -9,9 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BAUnlockedGestureVC">
             <connections>
-                <outlet property="loginButton" destination="4Mi-3x-ZNr" id="U5p-4f-z9E"/>
+                <outlet property="tableView" destination="h5N-fo-hUq" id="t6Z-Bi-pma"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,23 +20,21 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mi-3x-ZNr">
-                    <rect key="frame" x="20" y="100" width="335" height="40"/>
-                    <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="QBB-U0-120"/>
-                    </constraints>
-                    <state key="normal" title="登录"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h5N-fo-hUq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <action selector="handleButtonAction:" destination="-1" eventType="touchUpInside" id="EHU-mj-15C"/>
+                        <outlet property="dataSource" destination="-1" id="6kD-Nn-adV"/>
+                        <outlet property="delegate" destination="-1" id="piB-cc-tJy"/>
                     </connections>
-                </button>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4Mi-3x-ZNr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="55N-bM-lNQ"/>
-                <constraint firstAttribute="trailing" secondItem="4Mi-3x-ZNr" secondAttribute="trailing" constant="20" id="cEv-D5-0B2"/>
-                <constraint firstItem="4Mi-3x-ZNr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="tjA-A5-2Bk"/>
+                <constraint firstAttribute="trailing" secondItem="h5N-fo-hUq" secondAttribute="trailing" id="R3c-On-p7s"/>
+                <constraint firstItem="h5N-fo-hUq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lEV-Rf-vcZ"/>
+                <constraint firstItem="h5N-fo-hUq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="s3W-jM-1Xg"/>
+                <constraint firstAttribute="bottom" secondItem="h5N-fo-hUq" secondAttribute="bottom" id="wJe-4D-fqb"/>
             </constraints>
         </view>
     </objects>
