@@ -23,6 +23,12 @@ static NSString * const kCellID = @"SettingVCCell";
 
 @implementation SettingVC
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // 手势密码打开之后, 指纹密码失效, 应该在手势设置页面 pop 回当前页的时候刷新一下, 让指纹登录的开关关掉.
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -103,7 +109,9 @@ static NSString * const kCellID = @"SettingVCCell";
     {
         if (sender.tag == 0)
         {
-            [UIAlertController ba_alertControllerShowAlertInViewController:self withTitle:nil mutableAttributedTitle:nil message:@"继续开启指纹解锁\n将关闭手势解锁" mutableAttributedMessage:nil buttonTitlesArray:@[@"取 消", @"继 续"] buttonTitleColorArray:@[[UIColor greenColor], [UIColor redColor]] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+            // 开启和关闭指纹解锁的弹框信息区分开
+            NSString *msg = sender.isOn ? @"继续开启指纹解锁\n将关闭手势解锁" : @"关闭指纹解锁?";
+            [UIAlertController ba_alertControllerShowAlertInViewController:self withTitle:nil mutableAttributedTitle:nil message:msg mutableAttributedMessage:nil buttonTitlesArray:@[@"取 消", @"继 续"] buttonTitleColorArray:@[[UIColor greenColor], [UIColor redColor]] tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
                 
                 if (buttonIndex == 1)
                 {
@@ -120,6 +128,10 @@ static NSString * const kCellID = @"SettingVCCell";
                         [kUserDefaults setObject:[NSNumber numberWithBool:NO] forKey:kIsOpenTouchID];
                         sender.on = NO;
                     }
+                }
+                else // 弹框的取消按钮点击之后, 开关状态不应改变, 把状态切换回去.
+                {
+                    sender.on = !sender.isOn;
                 }
                 return;
             }];
